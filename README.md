@@ -1,1 +1,35 @@
 # ApiUserChronicle
+
+- src
+  - adapters
+    - inbound
+      - controllers
+        - notes.controllers.js
+        - user.controllers.js
+      - routes
+        - notes.routes.js
+        - user.routes.js
+        - routesHandler.js
+    - outbound
+      - infrastructure
+        - repositories
+          - base.repository.adapter.js
+          - note.repository.adapter.js
+          - user.repository.adapter.js
+        - jwt.js
+        - mongodb.js
+      - services
+  - domain
+    - modules
+      - notes
+        - notes.outbound.port.js
+        - notes.usecase.js
+      - user
+        - user.outbound.port.js
+        - user.usecase.js
+    - services
+      - error.js
+    - shared
+      - token.outbound.port.js
+  - index.js
+  - utils.js

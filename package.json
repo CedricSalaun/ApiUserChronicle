@@ -3,7 +3,7 @@
   "name": "user-chronicle",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:CedricSalaun/UserChronicleAPI.git",
+  "repository": "git@github.com:CedricSalaun/ApiUserChronicle.git",
   "author": "CedricSalaun <salaun.cedric@gmail.com>",
   "license": "MIT",
   "scripts": {

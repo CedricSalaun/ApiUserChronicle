@@ -20,7 +20,7 @@ export class NotesUsecase {
     const { _id: userId } = this.tokenOutboundPort.decodeToken(token);
 
     const note = await this.notesOutboundPort.getNoteById(noteId);
-    
+
     this.validateNoteOwnership(note, userId);
 
     return this.notesOutboundPort.updateNote({ _id: note._id, content });

@@ -22,7 +22,7 @@ export class UserUsecase {
 
     const user = await this.userOutboundPort.getUserByUserName(username);
     if (!user) throw new CustomError('Cet identifiant est inconnu', 403);
-    if (!this.tokenOutboundPort.compare({ data: password, hash: user.password })) throw new CustomError('Mot de passe incorrect', 401);
+    if (!await this.tokenOutboundPort.compare({ data: password, hash: user.password })) throw new CustomError('Mot de passe incorrect', 401);
 
     return this.tokenOutboundPort.generateToken({ _id: user._id });
   }

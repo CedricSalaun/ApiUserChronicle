@@ -1,5 +1,6 @@
 import 'dotenv/config';
-import * as http from 'http';
+import http from 'http';
+import url from 'url';
 
 import { MongoDBAdapter } from './adapters/outbound/infrastructure/mongodb.js';
 import { handleRoute } from './adapters/inbound/routes/routesHandler.js';
@@ -12,7 +13,14 @@ export { MongoDB };
 (async () => {
   const server = http.createServer(async (req, res) => {
     switch (req.method) {
+      case 'GET':
+        const parsedUrl = url.parse(req.url, true);
+        await handleRoute(req, res, parsedUrl.query);
+        break;
+      case 'DELETE':
+      case 'PATCH':
       case 'POST':
+      case 'PUT':
         let body = '';
         req.on('data', chunk => body += chunk.toString());
         req.on('end', async () => handleRoute(req, res, body && JSON.parse(body)))

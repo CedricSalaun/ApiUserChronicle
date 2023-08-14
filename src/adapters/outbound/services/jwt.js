@@ -34,7 +34,7 @@ export class JWTAdapter {
     }
   }
 
-  async hash(payload) { return bcrypt.hash(payload, 3); }
+  async hash(payload) { return bcrypt.hash(payload, 10); }
 
-  compare({ data, hash }) { return bcrypt.compare(data, hash); }
+  async compare({ data, hash }) { return bcrypt.compare(data, hash); }
 }

@@ -15,11 +15,11 @@ export class TokenOutboundPort {
     return this.tokenRepositoryAdapter.verifyToken(base64Token);
   }
 
-  hash(payload) {
+  async hash(payload) {
     return this.tokenRepositoryAdapter.hash(payload);
   }
 
-  compare(payload) {
+  async compare(payload) {
     return this.tokenRepositoryAdapter.compare(payload);
   }
 }

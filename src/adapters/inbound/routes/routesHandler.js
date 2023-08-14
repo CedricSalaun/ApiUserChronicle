@@ -1,9 +1,10 @@
 import { findRouteHandler } from '../../../utils.js';
+import { notesRoutes } from './notes.routes.js';
 import { userRoutes } from './user.routes.js';
 
 export async function handleRoute(req, res, payload) {
   const { method, url } = req;
-  const routesHandler = findRouteHandler(method, url, userRoutes);
+  const routesHandler = findRouteHandler(method, url, notesRoutes, userRoutes);
 
   if (routesHandler) {
     try {

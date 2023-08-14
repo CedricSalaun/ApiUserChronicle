@@ -16,9 +16,10 @@
           - base.repository.adapter.js
           - note.repository.adapter.js
           - user.repository.adapter.js
-        - jwt.js
         - mongodb.js
       - services
+        - jwt.js
+
   - domain
     - modules
       - notes

@@ -1,0 +1,30 @@
+version: '3'
+services:
+  api-user-chronicle:
+    container_name: api-user-chronicle
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - JWT_KEY=${JWT_KEY}
+        - PORT=${PORT}
+        - MONGODB_URI=${MONGODB_URI}
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      PORT: ${PORT}
+      MONGODB_URI: ${MONGODB_URI}
+      JWT_KEY: ${JWT_KEY}
+    depends_on:
+      - mongodb-user-chronicle
+
+  mongodb-user-chronicle:
+    container_name: mongodb-user-chronicle
+    image: mongo:4
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
